@@ -1,0 +1,5 @@
+function Achievements(){
+  return <h1>Exclusive Page</h1>
+}
+
+export default Achievements

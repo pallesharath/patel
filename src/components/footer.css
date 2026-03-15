@@ -1,0 +1,67 @@
+.footer{
+background:#0f766e;
+color:rgb(255, 255, 255);
+padding:60px 80px;
+}
+
+.footer-container{
+display:flex;
+justify-content:space-between;
+gap:40px;
+flex-wrap:wrap;
+}
+
+.footer-col{
+flex:1;
+min-width:250px;
+}
+
+.footer-col h3{
+margin-top:15px;
+font-size:18px;
+}
+
+.footer-col h2{
+margin-bottom:20px;
+}
+
+.footer-col p{
+margin:8px 0;
+color:#ddd;
+}
+
+.subscribe-box{
+display:flex;
+margin-top:15px;
+}
+
+.subscribe-box input{
+padding:10px;
+border:none;
+outline:none;
+width:200px;
+}
+
+.subscribe-box button{
+background:#f4a825;
+border:none;
+padding:10px 20px;
+color:white;
+cursor:pointer;
+}
+
+.social{
+margin-top:20px;
+display:flex;
+gap:15px;
+font-size:14px;
+}
+
+.footer-bottom{
+border-top:1px solid rgba(255,255,255,0.3);
+margin-top:40px;
+padding-top:20px;
+display:flex;
+justify-content:space-between;
+flex-wrap:wrap;
+}

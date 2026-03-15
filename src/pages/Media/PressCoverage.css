@@ -1,0 +1,35 @@
+.press-page {
+  padding: 20px;
+  text-align: center;
+}
+
+.press-page h1 {
+  margin-bottom: 20px;
+  font-size: 2em;
+}
+
+.press-gallery {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+  justify-items: center;
+}
+
+.press-gallery img {
+  width: 100%;
+  max-width: 480px;
+  height: 360px;
+  object-fit: cover;
+  border-radius: 18px;
+  border: 5px solid #fff;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.18), 0 2px 8px rgba(0,0,0,0.10);
+  background: #f5f5f5;
+  margin: 0 auto;
+  display: block;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.press-gallery img:hover {
+  transform: scale(1.04) translateY(-4px);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.22), 0 2px 8px rgba(0,0,0,0.12);
+}
