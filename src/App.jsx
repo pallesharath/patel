@@ -15,7 +15,7 @@ import Pictures from "./pages/Media/Pictures"
 import Broadcast from "./pages/Media/Broadcast"
 
 import Contact from "./pages/Contact/Contact"
-import Career from "./pages/career/Career"
+import Career from "./pages/career/career"
 
 // Admin Pages
 import AdminLogin from "./admin/AdminLogin"

@@ -1,5 +1,5 @@
 
-import "./Career.css"
+import "./career.css"
 
 import careerBanner from "../../assets/career-banner.jpg"
 
