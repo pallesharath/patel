@@ -1,4 +1,3 @@
-import React from "react"
 import "./History.css"
 
 import historyImg from "../../assets/museum1.jpg"

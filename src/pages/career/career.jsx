@@ -1,5 +1,5 @@
-import React from "react"
-import "./career.css"
+
+import "./Career.css"
 
 import careerBanner from "../../assets/career-banner.jpg"
 
