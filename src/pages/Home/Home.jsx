@@ -195,9 +195,9 @@ function Home() {
         <img src={President} alt="President" />
 
         <div className="president-content">
-          <h2>General Security</h2>
+          <h2>General Secretary</h2>
           <p>
-            Mr. Kumbam Srinivas Reddy the General security of Vedha Pudami Foundation,
+            Mr. Kumbam Srinivas Reddy the General secretary of Vedha Pudami Foundation,
             leads the organisation with a vision to research,
             preserve, and promote India’s ancient heritage.
             Through dedication and leadership, he guides the
