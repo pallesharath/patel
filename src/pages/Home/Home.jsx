@@ -170,47 +170,23 @@ function Home() {
       </section>
 
 
-      {/* VICE CHAIRMAN */}
-      <section className="vice-chairman">
+      <section className="leaders">
 
-        <div className="vice-chairman-content">
-          <h2>Vice Chairman</h2>
-          <p>
-            Mr. Gurram Thirupathi Reddy, the Vice Chairman of Vedha Pudami
-            Foundation, supports the mission of the foundation by
-            coordinating outreach programs, educational initiatives,
-            and social development projects. His dedication strengthens
-            the organisation’s impact on the community.
-          </p>
-        </div>
+  <div className="leader-card">
+    <img src={ViceChairman} alt="Vice Chairman" />
+    <h2>GURRAM THIRUPTHI REDDY</h2>
+    <h3>Vice Chairman</h3>
+  </div>
 
-        <img src={ViceChairman} alt="Vice Chairman" />
+  <div className="leader-card">
+    <img src={President} alt="General Secretary" />
+    <h2> KUMBAM SRINIVAS REDDY </h2>
+    <h3>General Secretary</h3>
+  </div>
 
-      </section>
+</section>
 
-
-      {/* PRESIDENT */}
-      <section className="president">
-
-        <img src={President} alt="President" />
-
-        <div className="president-content">
-          <h2>General Security</h2>
-          <p>
-            Mr. Kumbam Srinivas Reddy the General security of Vedha Pudami Foundation,
-            leads the organisation with a vision to research,
-            preserve, and promote India’s ancient heritage.
-            Through dedication and leadership, he guides the
-            foundation in exploring historical temples,
-            cultural traditions, and archaeological knowledge
-            for the benefit of society.
-          </p>
-        </div>
-
-      </section>
-
-
-      {/* PROJECTS + PRESS */}
+     {/* PROJECTS + PRESS */}
       <section className="media-section">
 
         <div className="media-box">

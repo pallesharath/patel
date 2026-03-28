@@ -95,8 +95,7 @@ max-width:800px;
 
 /* Chairman and Vice Chairman layout */
 
-.chairman,
-.vice-chairman{
+.chairman{
 display:flex;
 align-items:center;
 gap:40px;
@@ -104,8 +103,7 @@ margin:60px auto;
 max-width:1200px;
 }
 
-.chairman img,
-.vice-chairman img{
+.chairman img{
 width:260px;
 height:320px;
 object-fit:cover;
@@ -115,12 +113,7 @@ border-radius:20px;
 
 /* Content Cards */
 
-.vice-chairman-content{
-background:#0b434f;
-padding:40px;
-border-radius:30px;
-flex:1;
-}
+
 
 .chairman-content{
 background:#024d56;
@@ -132,8 +125,7 @@ flex:1;
 
 /* Heading */
 
-.chairman-content h2,
-.vice-chairman-content h2{
+.chairman-content h2{
 font-size:32px;
 margin-bottom:15px;
 }
@@ -141,8 +133,7 @@ margin-bottom:15px;
 
 /* Paragraph */
 
-.chairman-content p,
-.vice-chairman-content p{
+.chairman-content p{
 line-height:1.7;
 font-size:16px;
 }
@@ -310,39 +301,22 @@ color:#ddd;
 }
 
 
-/* PRESIDENT */
-
-.president{
-display:flex;
-align-items:center;
-gap:40px;
-margin:60px auto;
-max-width:1200px;
+.vice-chairman-content,
+.president-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 
-.president img{
-width:260px;
-height:320px;
-object-fit:cover;
-border-radius:20px;
+.vice-chairman-content img,
+.president-content img {
+  width: 200px;
+  height: auto;
+  border-radius: 12px;
 }
 
-.president-content{
-background:#10383d;
-padding:40px;
-border-radius:30px;
-flex:1;
-}
 
-.president-content h2{
-font-size:32px;
-margin-bottom:15px;
-}
-
-.president-content p{
-line-height:1.7;
-font-size:16px;
-}
 
 
 /* LOGO */
@@ -352,4 +326,73 @@ width:60px;
 height:60px;
 border-radius:50%;
 object-fit:cover;
+}
+
+/* Leaders Section */
+
+.leaders {
+  display: flex;
+  flex-direction: row; /* 🔥 force horizontal */
+  justify-content: center;
+  align-items: center;
+  gap: 60px;
+  margin: 40px 0;
+  flex-wrap: nowrap; /* 🔥 prevent going down */
+}
+
+.leader-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.leader-card img {
+  width: 220px;
+  height: 280px;
+  object-fit: cover;
+  border-radius: 16px;
+  margin-bottom: 10px;
+}
+
+.leader-card h3 {
+  font-size: 18px;
+}
+
+.leader-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 250px; /* 🔥 ADD THIS */
+}
+
+
+.leader-card {
+  width: 260px;
+  padding: 20px;
+  border-radius: 20px;
+
+  /* 🔥 WHITE INSIDE */
+  background: #ffffff;
+
+  /* 🔥 FRAME */
+  border: 2px solid #e5e7eb;
+
+  /* 🔥 SHADOW */
+  box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+
+  text-align: center;
+  transition: 0.3s;
+}
+
+.leader-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.3);
+}
+
+.leader-card h2,
+.leader-card h3,
+.leader-card p {
+  color: #0b0a0ac1 !important;
 }
