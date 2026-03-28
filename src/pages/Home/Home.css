@@ -274,10 +274,10 @@ body {
   width: 280px;
   height: 360px;
   border-radius: 4px;
-  overflow: hidden;
+  overflow: visible;
   border: 6px solid var(--sandstone);
   box-shadow: 12px 14px 0 var(--gold), 20px 22px 40px rgba(0,0,0,0.18);
-  object-fit: cover;
+  object-fit: contain;
   display: block;
 }
  
