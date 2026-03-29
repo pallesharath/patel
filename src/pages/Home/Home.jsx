@@ -1,4 +1,4 @@
-﻿import { useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import "./Home.css"
 
@@ -51,16 +51,6 @@ function Home() {
       if (linkError) {
         console.error("Press link fetch error:", linkError)
       }
-      if (!error && data.length > 0) {
-        const sorted = [...data].sort((a, b) =>
-          new Date(b.updated_at || b.created_at) - new Date(a.updated_at || a.created_at)
-        )
-        const { data: urlData } = supabase.storage.from("press").getPublicUrl(sorted[0].name)
-        const linkMap = new Map((linkRows || []).map((row) => [row.file_name, row.url]))
-        setLatestPress({
-          imageUrl: urlData.publicUrl,
-          linkUrl: linkMap.get(sorted[0].name) || null,
-        })
       }
       setPressLoading(false)
     }
@@ -204,7 +194,7 @@ function Home() {
           <div className="media-rule" />
           <div className="press-grid">
             {pressLoading ? (
-              <p className="empty-msg">Loading press coverage…</p>
+              <p className="empty-msg">Loading press coverage...</p>
             ) : latestPress ? (
               <div className="press-img-wrap">
                 <span className="press-corner tl" />
@@ -233,7 +223,7 @@ function Home() {
           </div>
           <div className="press-cta">
             <Link to="/press">
-              <button className="cta-btn">View All Coverage <span>→</span></button>
+              <button className="cta-btn">View All Coverage <span>-&gt;</span></button>
             </Link>
           </div>
         </div>
