@@ -51,6 +51,16 @@ function Home() {
       if (linkError) {
         console.error("Press link fetch error:", linkError)
       }
+      if (!error && data.length > 0) {
+        const sorted = [...data].sort((a, b) =>
+          new Date(b.updated_at || b.created_at) - new Date(a.updated_at || a.created_at)
+        )
+        const { data: urlData } = supabase.storage.from("press").getPublicUrl(sorted[0].name)
+        const linkMap = new Map((linkRows || []).map((row) => [row.file_name, row.url]))
+        setLatestPress({
+          imageUrl: urlData.publicUrl,
+          linkUrl: linkMap.get(sorted[0].name) || null,
+        })
       }
       setPressLoading(false)
     }
