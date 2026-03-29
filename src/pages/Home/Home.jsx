@@ -1,842 +1,246 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Source+Sans+3:wght@300;400;600&display=swap');
- 
-:root {
-  --stone:       #f5ede0;
-  --sandstone:   #e8d5b7;
-  --terracotta:  #c0622a;
-  --gold:        #b8860b;
-  --gold-light:  #d4a843;
-  --forest:      #1a3a2e;
-  --forest-mid:  #2d5a45;
-  --ink:         #1c1410;
-  --ash:         #7a6a5a;
-  --white:       #fdfaf6;
-  --rule:        rgba(184,134,11,0.35);
- 
-  --font-display: 'Cormorant Garamond', Georgia, serif;
-  --font-body:    'Source Sans 3', 'Helvetica Neue', sans-serif;
-}
- 
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
- 
-body {
-  background-color: var(--white);
-  color: var(--ink);
-  font-family: var(--font-body);
-  font-weight: 400;
-  line-height: 1.7;
-  -webkit-font-smoothing: antialiased;
-}
- 
-.home { overflow-x: hidden; }
- 
-.section-eyebrow {
-  font-family: var(--font-body);
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--gold);
-  margin-bottom: 10px;
-}
-.section-eyebrow.center { text-align: center; }
- 
-.section-heading {
-  font-family: var(--font-display);
-  font-size: clamp(2rem, 4vw, 3rem);
-  font-weight: 700;
-  color: var(--ink);
-  line-height: 1.15;
-}
-.section-heading.center { text-align: center; }
- 
-.empty-msg { color: var(--ash); font-style: italic; font-size: 0.95rem; }
-.empty-msg.center { text-align: center; }
- 
-/* HERO */
-.hero {
-  position: relative;
-  height: 100svh;
-  min-height: 560px;
-  overflow: hidden;
-}
- 
-.hero img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  transform: scale(1.04);
-  animation: heroZoom 12s ease-out forwards;
-}
- 
-@keyframes heroZoom {
-  from { transform: scale(1.04); }
-  to   { transform: scale(1.00); }
-}
- 
-.hero-overlay {
-  position: absolute; inset: 0;
-  background: linear-gradient(
-    to bottom,
-    rgba(15, 10, 5, 0.25) 0%,
-    rgba(15, 10, 5, 0.55) 60%,
-    rgba(15, 10, 5, 0.80) 100%
-  );
-  z-index: 1;
-}
- 
-.hero-content {
-  position: absolute;
-  bottom: 10%;
-  left: 0; right: 0;
-  text-align: center;
-  z-index: 2;
-  padding: 0 20px;
-  animation: heroFade 1.4s ease 0.3s both;
-}
- 
-@keyframes heroFade {
-  from { opacity: 0; transform: translateY(24px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
- 
-.hero-eyebrow {
-  font-family: var(--font-body);
-  font-size: 0.72rem;
-  letter-spacing: 0.25em;
-  text-transform: uppercase;
-  color: var(--gold-light);
-  margin-bottom: 12px;
-}
- 
-.hero-title {
-  font-family: var(--font-display);
-  font-size: clamp(3rem, 8vw, 7rem);
-  font-weight: 700;
-  color: var(--white);
-  line-height: 1.05;
-  margin-bottom: 18px;
-}
-.hero-title span {
-  color: var(--gold-light);
-  font-style: italic;
-}
- 
-.hero-subtitle {
-  font-family: var(--font-body);
-  font-size: clamp(0.9rem, 2vw, 1.15rem);
-  color: rgba(253, 250, 246, 0.78);
-  letter-spacing: 0.04em;
-  margin-bottom: 24px;
-}
- 
-.hero-divider {
-  width: 60px;
-  height: 2px;
-  background: var(--gold-light);
-  margin: 0 auto;
-}
- 
-/* UPDATE BAR */
-.updates {
-  background: var(--forest);
-  padding: 0;
-  border-bottom: 2px solid var(--gold);
-}
- 
-.update-inner {
-  display: flex;
-  align-items: stretch;
-  overflow: hidden;
-}
- 
-.update-label {
-  background: var(--gold);
-  color: var(--ink);
-  font-family: var(--font-body);
-  font-size: 0.7rem;
-  font-weight: 600;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  padding: 10px 20px;
-  white-space: nowrap;
-  display: flex;
-  align-items: center;
-  flex-shrink: 0;
-}
- 
-.update-ticker,
-.update-scroll {
-  overflow: hidden;
-  flex: 1;
-  display: flex;
-  align-items: center;
-  padding: 10px 0;
-}
- 
-.update-ticker span,
-.update-scroll span {
-  display: inline-block;
-  white-space: nowrap;
-  color: var(--sandstone);
-  font-size: 0.9rem;
-  letter-spacing: 0.03em;
-  animation: tickerScroll 18s linear infinite;
-  padding-left: 40px;
-}
- 
-@keyframes tickerScroll {
-  from { transform: translateX(100vw); }
-  to   { transform: translateX(-100%); }
-}
- 
-/* ABOUT */
-.about-section,
-.about-image {
-  position: relative;
-  min-height: 480px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  background-size: cover;
-  background-position: center;
-}
- 
-.about-bg {
-  position: absolute; inset: 0;
-  background-size: cover;
-  background-position: center;
-  transform: scale(1.06);
-  transition: transform 0.8s ease;
-}
- 
-.about-section:hover .about-bg { transform: scale(1.02); }
- 
-.about-veil {
-  position: absolute; inset: 0;
-  background: linear-gradient(135deg,
-    rgba(15, 36, 24, 0.88) 0%,
-    rgba(20, 20, 10, 0.82) 100%
-  );
-}
- 
-.about-content {
-  position: relative;
-  z-index: 2;
-  max-width: 820px;
-  margin: 0 auto;
-  padding: 80px 48px;
-  text-align: center;
-  color: var(--white);
-}
- 
-.about-content h2 {
-  font-family: var(--font-display);
-  font-size: clamp(2rem, 4vw, 3.2rem);
-  font-weight: 700;
-  margin-bottom: 16px;
-  color: var(--white);
-}
- 
-.about-rule {
-  width: 56px;
-  height: 2px;
-  background: var(--gold-light);
-  margin: 0 auto 28px;
-}
- 
-.about-content p {
-  font-size: 1.05rem;
-  line-height: 1.85;
-  color: rgba(253, 250, 246, 0.88);
-}
- 
-/* CHAIRMAN */
-.chairman-section,
-.chairman {
-  display: flex;
-  align-items: flex-start;
-  gap: 64px;
-  max-width: 1160px;
-  margin: 100px auto;
-  padding: 0 48px;
-}
- 
-.chairman-image-wrap {
-  position: relative;
-  flex-shrink: 0;
-}
- 
-/* ✅ REPLACE your old combined rule with these two separate rules */
+import { useEffect, useState } from "react"
+import { Link } from "react-router-dom"
+import "./Home.css"
 
-.chairman-img-frame {
-  width: 280px;
-  height: auto;              /* ✅ lets frame grow to fit image */
-  padding: 10px;
-  background: var(--white);
-  border: 6px solid var(--sandstone);
-  border-radius: 6px;
-  box-shadow:
-    10px 12px 0 var(--gold),
-    18px 20px 40px rgba(0,0,0,0.18);
-  display: flex;
-  justify-content: center;
-  align-items: center;
+import banner from "../../assets/banner.jpg"
+import museum1 from "../../assets/museum1.jpg"
+import owner from "../../assets/owner.jpg"
+import ViceChairman from "../../assets/ViceChairman.jpg"
+import President from "../../assets/president.jpg"
+
+import { supabase } from "../../supabaseClient"
+
+function Home() {
+  const [latestUpdate, setLatestUpdate] = useState("Loading latest update...")
+  const [projects, setProjects] = useState([])
+  const [latestPressImage, setLatestPressImage] = useState(null)
+  const [pressLoading, setPressLoading] = useState(true)
+  const [teamMembers, setTeamMembers] = useState([])
+
+  useEffect(() => {
+    const fetchLatestUpdate = async () => {
+      const { data, error } = await supabase
+        .from("homepage_header")
+        .select("header_line")
+        .order("updated_at", { ascending: false })
+        .limit(1)
+      if (error) { setLatestUpdate("Unable to load updates"); return }
+      if (data && data.length > 0 && data[0].header_line) {
+        setLatestUpdate(data[0].header_line)
+      } else {
+        setLatestUpdate("No updates available")
+      }
+    }
+
+    const fetchProjects = async () => {
+      const { data, error } = await supabase
+        .from("post")
+        .select("id, tittle, image")
+        .order("id", { ascending: false })
+        .limit(2)
+      if (!error) {
+        setProjects((data || []).map((p) => ({ ...p, title: p.tittle, imageUrl: p.image || null })))
+      }
+    }
+
+    const fetchLatestPressImage = async () => {
+      const { data, error } = await supabase.storage.from("press").list()
+      if (!error && data.length > 0) {
+        const sorted = [...data].sort((a, b) =>
+          new Date(b.updated_at || b.created_at) - new Date(a.updated_at || a.created_at)
+        )
+        const { data: urlData } = supabase.storage.from("press").getPublicUrl(sorted[0].name)
+        setLatestPressImage(urlData.publicUrl)
+      }
+      setPressLoading(false)
+    }
+
+    const fetchTeamMembers = async () => {
+      const { data, error } = await supabase.from("team").select("*").order("created_at", { ascending: false })
+      if (!error) setTeamMembers(data)
+    }
+
+    fetchLatestUpdate()
+    fetchProjects()
+    fetchLatestPressImage()
+    fetchTeamMembers()
+  }, [])
+
+  return (
+    <div className="home">
+
+      {/* HERO */}
+      <section className="hero">
+        <div className="hero-overlay" />
+        <img src={banner} alt="Vedha Pudami Foundation" />
+        <div className="hero-content">
+          <p className="hero-eyebrow">Est. March 2026</p>
+          <h1 className="hero-title">Vedha Pudami<br /><span>Foundation</span></h1>
+          <p className="hero-subtitle">Preserving India's Ancient Heritage Through Evidence-Based Research</p>
+          <div className="hero-divider" />
+        </div>
+      </section>
+
+      {/* UPDATE BAR */}
+      <section className="updates">
+        <div className="update-inner">
+          <span className="update-label">Latest Update</span>
+          <div className="update-ticker">
+            <span>{latestUpdate}</span>
+          </div>
+        </div>
+      </section>
+
+      {/* ABOUT */}
+      <section className="about-section">
+        <div className="about-bg" style={{ backgroundImage: `url(${museum1})` }} />
+        <div className="about-veil" />
+        <div className="about-content">
+          <p className="section-eyebrow">Who We Are</p>
+          <h2>About the Foundation</h2>
+          <div className="about-rule" />
+          <p>
+            Vedha Pudami Foundation is a research-oriented organization established in March 2026
+            with the aim of studying and preserving the ancient history, culture, and heritage of
+            India. The foundation focuses on archaeology and heritage research, conducting in-depth
+            studies of ancient temples and historical structures. Through careful research and
+            documentation, it seeks to uncover historical truths with proper evidence and share
+            this knowledge with society. The foundation also studies the symbols, statues, and
+            sculptures found in temples to understand their historical significance. By promoting
+            research and awareness, Vedha Pudami Foundation works to preserve cultural heritage
+            and provide authentic historical knowledge for future generations.
+          </p>
+        </div>
+      </section>
+
+      {/* CHAIRMAN */}
+      <section className="chairman-section">
+        <div className="chairman-image-wrap">
+          <div className="chairman-img-frame">
+            <img src={owner} alt="Chairman" />
+          </div>
+          <div className="chairman-badge">Founder &amp; Chairman</div>
+        </div>
+        <div className="chairman-content">
+          <p className="section-eyebrow">Leadership</p>
+          <h2>Thella Satheesh Patel</h2>
+          <div className="chairman-rule" />
+          <p>
+            Mr. Thella Satheesh Patel is the Founder and Chairman of the Vedha Pudami Foundation.
+            With more than 14 years of experience, he has conducted extensive research on ancient
+            history, temple architecture, and the cultural heritage of India. Through evidence-based
+            research, his primary aim is to uncover historical truths and share that knowledge with
+            society. Under his leadership, the foundation has initiated several impactful social
+            programs and research initiatives.
+          </p>
+        </div>
+      </section>
+
+      {/* LEADERS */}
+      <section className="leaders-section">
+        <p className="section-eyebrow center">Core Leadership</p>
+        <h2 className="section-heading center">Pillars of the Foundation</h2>
+        <div className="leaders-grid">
+          <div className="leader-card">
+            <div className="leader-img-wrap">
+              <img src={ViceChairman} alt="Vice Chairman" />
+            </div>
+            <div className="leader-info">
+              <h3>Gurram Thirupthi Reddy</h3>
+              <span className="leader-role">Vice Chairman</span>
+            </div>
+          </div>
+          <div className="leader-card">
+            <div className="leader-img-wrap">
+              <img src={President} alt="General Secretary" />
+            </div>
+            <div className="leader-info">
+              <h3>Kumbam Srinivas Reddy</h3>
+              <span className="leader-role">General Secretary</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* PROJECTS + PRESS */}
+      <section className="media-section">
+        <div className="media-col">
+          <p className="section-eyebrow">What's Ahead</p>
+          <h2 className="media-heading">Upcoming Projects</h2>
+          <div className="media-rule" />
+          <div className="project-grid">
+            {projects.length > 0 ? projects.slice(0, 2).map((project) => (
+              <div className="project-card" key={project.id}>
+                <span className="corner-tr" />
+                <span className="corner-bl" />
+                <div className="project-img-wrap">
+                  <img
+                    src={project.imageUrl}
+                    alt={project.title}
+                    onError={e => { e.target.onerror = null; e.target.src = 'https://via.placeholder.com/480x360?text=No+Image' }}
+                  />
+                </div>
+                <p className="project-title">{project.title}</p>
+              </div>
+            )) : <p className="empty-msg">No upcoming projects</p>}
+          </div>
+        </div>
+
+        <div className="media-divider" />
+
+        <div className="media-col">
+          <p className="section-eyebrow">In the News</p>
+          <h2 className="media-heading">Press Coverage</h2>
+          <div className="media-rule" />
+          <div className="press-grid">
+            {pressLoading ? (
+              <p className="empty-msg">Loading press coverage…</p>
+            ) : latestPressImage ? (
+              <div className="press-img-wrap">
+                <span className="press-corner tl" />
+                <span className="press-corner tr" />
+                <span className="press-corner bl" />
+                <span className="press-corner br" />
+                <img
+                  src={latestPressImage}
+                  alt="Press coverage"
+                  onError={e => { e.target.onerror = null; e.target.src = 'https://via.placeholder.com/360x360?text=No+Image' }}
+                />
+              </div>
+            ) : (
+              <p className="empty-msg">No press coverage available</p>
+            )}
+          </div>
+          <div className="press-cta">
+            <Link to="/press">
+              <button className="cta-btn">View All Coverage <span>→</span></button>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* TEAM */}
+      <section className="team-section">
+        <p className="section-eyebrow center">The People Behind the Work</p>
+        <h2 className="section-heading center">Our Team</h2>
+        <div className="team-rule" />
+        <div className="team-grid">
+          {teamMembers.length > 0 ? teamMembers.map((member) => (
+            <div className="team-card" key={member.id}>
+              <div className="team-img-wrap">
+                <img src={member.image} alt={member.name} />
+              </div>
+              <div className="team-info">
+                <h3>{member.name}</h3>
+                <p>{member.role}</p>
+              </div>
+            </div>
+          )) : <p className="empty-msg center">No team members available</p>}
+        </div>
+      </section>
+
+    </div>
+  )
 }
 
-.chairman-img-frame img {
-  width: 100%;
-  height: auto;              /* ✅ image scales naturally, no crop */
-  object-fit: contain;
-  display: block;
-}
- 
-.chairman-badge {
-  position: absolute;
-  bottom: -16px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: var(--forest);
-  color: var(--gold-light);
-  font-family: var(--font-body);
-  font-size: 0.68rem;
-  font-weight: 600;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  padding: 7px 18px;
-  white-space: nowrap;
-  border-radius: 2px;
-}
- 
-.chairman-content {
-  flex: 1;
-  padding-top: 12px;
-}
- 
-.chairman-content h2 {
-  font-family: var(--font-display);
-  font-size: clamp(1.8rem, 3vw, 2.8rem);
-  font-weight: 700;
-  color: var(--ink);
-  margin-bottom: 16px;
-}
- 
-.chairman-rule {
-  width: 48px;
-  height: 2px;
-  background: var(--terracotta);
-  margin-bottom: 24px;
-}
- 
-.chairman-content p {
-  font-size: 1rem;
-  line-height: 1.85;
-  color: #3d302a;
-  max-width: 600px;
-}
- 
-/* LEADERS */
-.leaders-section,
-.leaders {
-  background: var(--stone);
-  padding: 100px 48px;
-  border-top: 1px solid var(--sandstone);
-  border-bottom: 1px solid var(--sandstone);
-}
- 
-.leaders-grid,
-.leaders {
-  display: flex;
-  justify-content: center;
-  gap: 60px;
-  margin-top: 48px;
-  flex-wrap: wrap;
-}
- 
-.leader-card {
-  background: var(--white);
-  border-radius: 6px;
-  overflow: hidden;
-  width: 260px;
-  box-shadow: 0 4px 24px rgba(28, 20, 16, 0.12);
-  border: 1px solid var(--sandstone);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  text-align: center;
-  padding-bottom: 18px;
-}
- 
-.leader-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 16px 40px rgba(28, 20, 16, 0.18);
-}
- 
-.leader-img-wrap {
-  width: 100%;
-  height: 300px;
-  overflow: hidden;
-}
- 
-.leader-card img,
-.leader-img-wrap img {
-  width: 100%;
-  height: 300px;
-  object-fit: cover;
-  display: block;
-  transition: transform 0.5s ease;
-}
- 
-.leader-card:hover .leader-img-wrap img,
-.leader-card:hover img { transform: scale(1.05); }
- 
-.leader-info {
-  padding: 18px 20px 22px;
-  text-align: center;
-  border-top: 3px solid var(--gold);
-}
- 
-.leader-card h2,
-.leader-info h3 {
-  font-family: var(--font-display);
-  font-size: 1.15rem;
-  font-weight: 700;
-  color: var(--ink);
-  margin: 16px 12px 6px;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-}
- 
-.leader-role,
-.leader-card h3 {
-  font-family: var(--font-body);
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--terracotta);
-  margin-bottom: 12px;
-}
- 
-/* MEDIA SECTION */
-.media-section {
-  display: flex;
-  gap: 0;
-  background: var(--white);
-  max-width: 1160px;
-  margin: 100px auto;
-  padding: 0 48px;
-}
- 
-.media-col,
-.media-box {
-  flex: 1;
-  padding: 0 40px 0 0;
-}
- 
-.media-col:last-child,
-.media-box:last-child { padding: 0 0 0 40px; }
- 
-.media-divider { width: 1px; background: var(--sandstone); margin: 0 8px; align-self: stretch; }
- 
-.media-heading,
-.media-title {
-  font-family: var(--font-display);
-  font-size: clamp(1.8rem, 3vw, 2.4rem);
-  font-weight: 700;
-  color: var(--ink);
-  margin-bottom: 14px;
-}
- 
-.media-rule { width: 40px; height: 2px; background: var(--gold); margin-bottom: 32px; }
- 
-.project-grid,
-.media-images {
-  display: flex;
-  flex-direction: column;
-  gap: 36px;
-}
- 
-/* ═══════════════════════════════════════════════
-   PROJECT CARDS — Decorative Gold Frame
-   ═══════════════════════════════════════════════ */
- 
-.project-card,
-.media-card {
-  position: relative;
-  border-radius: 0;
-  overflow: visible;
-  background: var(--stone);
-  box-shadow: 0 4px 20px rgba(0,0,0,0.10);
-  transition: box-shadow 0.35s ease, transform 0.35s ease;
-  margin: 12px;
-}
- 
-/* Outer gold border frame */
-.project-card::before,
-.media-card::before {
-  content: '';
-  position: absolute;
-  inset: -9px;
-  border: 2px solid var(--gold);
-  pointer-events: none;
-  z-index: 2;
-  transition: inset 0.3s ease, border-color 0.3s ease;
-}
- 
-/* Inner finer accent line */
-.project-card::after,
-.media-card::after {
-  content: '';
-  position: absolute;
-  inset: -4px;
-  border: 1px solid rgba(184,134,11,0.28);
-  pointer-events: none;
-  z-index: 2;
-}
- 
-/* Corner ornament squares — top-left & bottom-right via img-wrap pseudo */
-.project-img-wrap {
-  position: relative;
-  height: 220px;
-  overflow: hidden;
-}
- 
-.project-img-wrap::before,
-.project-img-wrap::after {
-  content: '';
-  position: absolute;
-  width: 10px;
-  height: 10px;
-  background: var(--gold);
-  z-index: 5;
-  pointer-events: none;
-}
-.project-img-wrap::before { top: -14px;    left: -14px; }
-.project-img-wrap::after  { bottom: -14px; right: -14px; }
- 
-/* Top-right & bottom-left corners via span elements added in JSX */
-.project-card .corner-tr,
-.project-card .corner-bl {
-  position: absolute;
-  width: 10px;
-  height: 10px;
-  background: var(--gold);
-  z-index: 5;
-  pointer-events: none;
-  transition: background 0.3s ease;
-}
-.project-card .corner-tr { top: -14px;    right: -14px; }
-.project-card .corner-bl { bottom: -14px; left: -14px; }
- 
-.project-card:hover,
-.media-card:hover {
-  box-shadow: 0 12px 36px rgba(0,0,0,0.16);
-  transform: translateY(-4px);
-}
- 
-.project-card:hover::before,
-.media-card:hover::before {
-  inset: -12px;
-  border-color: var(--gold-light);
-}
- 
-.project-card:hover .corner-tr,
-.project-card:hover .corner-bl {
-  background: var(--gold-light);
-}
- 
-.project-img-wrap img {
-  width: 100%; height: 100%;
-  object-fit: cover; display: block;
-  transition: transform 0.5s ease;
-}
- 
-.project-card:hover .project-img-wrap img { transform: scale(1.04); }
- 
-.project-title,
-.media-card .title {
-  padding: 14px 16px;
-  font-family: var(--font-display);
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: var(--ink);
-  background: var(--stone);
-}
- 
-/* ═══════════════════════════════════════════════
-   PRESS COVERAGE — Decorative Gold Frame
-   ═══════════════════════════════════════════════ */
- 
-.press-grid,
-.press-images { margin-bottom: 28px; }
- 
-.press-img-wrap {
-  position: relative;
-  height: 340px;
-  overflow: visible;
-  margin: 12px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.10);
-  transition: transform 0.35s ease, box-shadow 0.35s ease;
-}
- 
-/* Outer gold frame */
-.press-img-wrap::before {
-  content: '';
-  position: absolute;
-  inset: -9px;
-  border: 2px solid var(--gold);
-  z-index: 2;
-  pointer-events: none;
-  transition: inset 0.3s ease, border-color 0.3s ease;
-}
- 
-/* Inner accent line */
-.press-img-wrap::after {
-  content: '';
-  position: absolute;
-  inset: -4px;
-  border: 1px solid rgba(184,134,11,0.28);
-  z-index: 2;
-  pointer-events: none;
-}
- 
-/* Corner ornament squares */
-.press-img-wrap .press-corner {
-  position: absolute;
-  width: 10px;
-  height: 10px;
-  background: var(--gold);
-  z-index: 5;
-  pointer-events: none;
-  transition: background 0.3s ease;
-}
-.press-img-wrap .press-corner.tl { top: -14px;    left: -14px; }
-.press-img-wrap .press-corner.tr { top: -14px;    right: -14px; }
-.press-img-wrap .press-corner.bl { bottom: -14px; left: -14px; }
-.press-img-wrap .press-corner.br { bottom: -14px; right: -14px; }
- 
-.press-img-wrap:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 14px 38px rgba(0,0,0,0.15);
-}
- 
-.press-img-wrap:hover::before {
-  inset: -12px;
-  border-color: var(--gold-light);
-}
- 
-.press-img-wrap:hover .press-corner { background: var(--gold-light); }
- 
-.press-img-wrap img {
-  width: 100%; height: 100%;
-  object-fit: cover; display: block;
-  transition: transform 0.5s ease;
-}
- 
-.press-img-wrap:hover img { transform: scale(1.03); }
- 
-/* ═══════════════════════════════════════════════
-   END FRAMES
-   ═══════════════════════════════════════════════ */
- 
-.press-cta, .view-more { margin-top: 36px; }
- 
-.cta-btn,
-.view-more button {
-  background: transparent;
-  border: 2px solid var(--terracotta);
-  color: var(--terracotta);
-  font-family: var(--font-body);
-  font-size: 0.85rem;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  padding: 12px 28px;
-  cursor: pointer;
-  border-radius: 3px;
-  transition: background 0.25s ease, color 0.25s ease;
-}
- 
-.cta-btn span { margin-left: 8px; }
- 
-.cta-btn:hover,
-.view-more button:hover {
-  background: var(--terracotta);
-  color: var(--white);
-}
- 
-/* TEAM */
-.team-section,
-.team {
-  background: var(--forest);
-  padding: 100px 48px;
-  position: relative;
-  overflow: hidden;
-}
- 
-.team-section::before,
-.team::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23b8860b' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-  pointer-events: none;
-}
- 
-.team-rule { width: 48px; height: 2px; background: var(--gold); margin: 20px auto 56px; }
- 
-.team-grid,
-.team-container {
-  display: flex;
-  justify-content: center;
-  gap: 28px;
-  flex-wrap: wrap;
-  position: relative;
-  z-index: 1;
-}
- 
-.team-card {
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(184,134,11,0.25);
-  border-radius: 6px;
-  width: 220px;
-  overflow: hidden;
-  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-  text-align: center;
-  padding-bottom: 16px;
-}
- 
-.team-card:hover {
-  transform: translateY(-10px);
-  border-color: var(--gold);
-  box-shadow: 0 16px 40px rgba(0,0,0,0.35);
-}
- 
-.team-img-wrap { height: 260px; overflow: hidden; }
- 
-.team-card img,
-.team-img-wrap img {
-  width: 100%; height: 260px;
-  object-fit: cover; display: block;
-  transition: transform 0.5s ease;
-}
- 
-.team-card:hover .team-img-wrap img,
-.team-card:hover img { transform: scale(1.06); }
- 
-.team-info { padding: 16px; text-align: center; }
- 
-.team-card h3,
-.team-info h3 {
-  font-family: var(--font-display);
-  font-size: 1.05rem;
-  font-weight: 700;
-  color: var(--white);
-  margin: 12px 8px 4px;
-}
- 
-.team-card p,
-.team-info p {
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--gold-light);
-}
- 
-/* RESPONSIVE */
-@media (max-width: 900px) {
-  .chairman-section, .chairman {
-    flex-direction: column;
-    align-items: center;
-    margin: 60px auto;
-    padding: 0 24px;
-    gap: 48px;
-  }
- 
-  /* CHAIRMAN — FIXED & UPGRADED */
-/* =========================
-   CHAIRMAN — FINAL FIXED
-   ========================= */
-
-/* =========================
-   CHAIRMAN — FINAL WORKING
-   ========================= */
-
-.chairman {
-  display: flex;
-  align-items: flex-start;
-  gap: 64px;
-  max-width: 1160px;
-  margin: 100px auto;
-  padding: 0 48px;
-}
-
-/* IMAGE WRAPPER */
-.chairman-image-wrap {
-  position: relative;
-  flex-shrink: 0;
-}
-
-/* FRAME */
-.chairman-img-frame {
-  width: 280px;
-  height: auto;              /* ✅ IMPORTANT */
-  padding: 10px;
-  background: var(--white);
-
-  border: 6px solid var(--sandstone);
-  border-radius: 6px;
-
-  box-shadow:
-    10px 12px 0 var(--gold),
-    18px 20px 40px rgba(0,0,0,0.18);
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-/* IMAGE FIX */
-.chairman-img-frame img {
-  width: 100%;
-  height: auto;              /* ✅ FULL IMAGE SHOW */
-  object-fit: contain;       /* ✅ NO CROP */
-  display: block;
-}
-
-/* BADGE */
-.chairman-badge {
-  position: absolute;
-  bottom: -16px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: var(--forest);
-  color: var(--gold-light);
-  font-size: 0.68rem;
-  letter-spacing: 0.18em;
-  padding: 7px 18px;
-}
- 
-  .media-section {
-    flex-direction: column;
-    margin: 60px auto;
-    padding: 0 24px;
-  }
- 
-  .media-col, .media-box { padding: 0 !important; }
-  .media-col:last-child, .media-box:last-child { padding-top: 48px !important; }
-  .media-divider { display: none; }
- 
-  .leaders-section, .leaders { padding: 60px 24px; }
-  .team-section, .team { padding: 60px 24px; }
-  .about-content { padding: 60px 24px; }
-  .leaders-grid, .leaders { gap: 28px; }
-}
- 
-@media (max-width: 600px) {
-  .hero-title { font-size: 3rem; }
-  .team-grid, .team-container { gap: 18px; }
-  .project-grid, .media-images { gap: 24px; }
-}
+export default Home
