@@ -70,7 +70,7 @@ function App() {
 
 <Route path="/admin/team" element={<TeamAdmin />} />
 
-<Route path="/admin/updates" element={<UpdatesAdmin />} />
+<Route path="/admin/pictures" element={<UpdatesAdmin />} />
 
 <Route path="/admin/career" element={<CareerAdmin />} />
 

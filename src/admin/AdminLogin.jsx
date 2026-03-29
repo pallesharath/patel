@@ -8,7 +8,7 @@ const [password,setPassword]=useState("")
 const login=(e)=>{
 e.preventDefault()
 
-if(username==="sharath" && password==="Sharath123"){
+if(username==="Sharath" && password==="Sharath123"){
 window.location="/dashboard"
 }
 else{

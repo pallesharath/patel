@@ -19,21 +19,33 @@ function PressCoverage() {
 
         console.log("Press storage list:", data)
 
+        const { data: linkRows, error: linkError } = await supabase
+          .from('press_coverage')
+          .select('file_name, url')
+        if (linkError) {
+          console.error("Press link fetch error:", linkError)
+        }
+
         const sortedFiles = (data || []).slice().sort((a, b) => {
           const aTime = new Date(a.updated_at || a.created_at).getTime()
           const bTime = new Date(b.updated_at || b.created_at).getTime()
           return bTime - aTime
         })
 
-        const imageUrls = sortedFiles.map(file => {
+        const linkMap = new Map((linkRows || []).map((row) => [row.file_name, row.url]))
+
+        const imageItems = sortedFiles.map(file => {
           const { data: { publicUrl } } = supabase.storage
             .from('press')
             .getPublicUrl(file.name)
           console.log("Press public url for", file.name, "=", publicUrl)
-          return publicUrl
+          return {
+            imageUrl: publicUrl,
+            linkUrl: linkMap.get(file.name) || null,
+          }
         })
 
-        setPressImages(imageUrls)
+        setPressImages(imageItems)
       } catch (error) {
         console.error("Error fetching press images:", error)
       }
@@ -51,7 +63,13 @@ function PressCoverage() {
       <div className="press-gallery">
 
         {pressImages.map((img, index) => (
-          <img key={index} src={img} alt="press" />
+          img.linkUrl ? (
+            <a key={index} href={img.linkUrl} target="_blank" rel="noreferrer" aria-label="Open press article">
+              <img src={img.imageUrl} alt="press" />
+            </a>
+          ) : (
+            <img key={index} src={img.imageUrl} alt="press" />
+          )
         ))}
 
       </div>

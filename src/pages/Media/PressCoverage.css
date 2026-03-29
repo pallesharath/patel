@@ -15,6 +15,13 @@
   justify-items: center;
 }
 
+.press-gallery a {
+  display: block;
+  width: 100%;
+  max-width: 480px;
+  text-decoration: none;
+}
+
 .press-gallery img {
   width: 100%;
   max-width: 480px;

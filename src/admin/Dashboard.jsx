@@ -22,7 +22,7 @@ return(
 
 <div style={{marginBottom:"20px"}}>
 
-<button onClick={()=>setSection("updates")}>Manage Updates</button>
+<button onClick={()=>setSection("pictures")}>Manage Pictures</button>
 <button onClick={()=>setSection("projects")}>Manage Projects</button>
 <button onClick={()=>setSection("press")}>Manage Press Coverage</button>
 <button onClick={()=>setSection("team")}>Manage Team Members</button>
@@ -33,7 +33,7 @@ return(
 
 {/* SECTION DISPLAY */}
 
-{section === "updates" && <UpdatesAdmin/>}
+{section === "pictures" && <UpdatesAdmin/>}
 {section === "projects" && <ProjectsAdmin/>}
 {section === "press" && <PressAdmin/>}
 {section === "team" && <TeamAdmin/>}
