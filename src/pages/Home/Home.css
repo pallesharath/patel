@@ -269,14 +269,26 @@ body {
   flex-shrink: 0;
 }
  
-.chairman-img-frame,
-.chairman img {
+/* ✅ REPLACE your old combined rule with these two separate rules */
+
+.chairman-img-frame {
   width: 280px;
-  height: 360px;
-  border-radius: 4px;
-  overflow: hidden;
+  height: auto;              /* ✅ lets frame grow to fit image */
+  padding: 10px;
+  background: var(--white);
   border: 6px solid var(--sandstone);
-  box-shadow: 12px 14px 0 var(--gold), 20px 22px 40px rgba(0,0,0,0.18);
+  border-radius: 6px;
+  box-shadow:
+    10px 12px 0 var(--gold),
+    18px 20px 40px rgba(0,0,0,0.18);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.chairman-img-frame img {
+  width: 100%;
+  height: auto;              /* ✅ image scales naturally, no crop */
   object-fit: contain;
   display: block;
 }
@@ -743,8 +755,69 @@ body {
     gap: 48px;
   }
  
-  .chairman-img-frame,
-  .chairman img { width: 240px; height: 300px; }
+  /* CHAIRMAN — FIXED & UPGRADED */
+/* =========================
+   CHAIRMAN — FINAL FIXED
+   ========================= */
+
+/* =========================
+   CHAIRMAN — FINAL WORKING
+   ========================= */
+
+.chairman {
+  display: flex;
+  align-items: flex-start;
+  gap: 64px;
+  max-width: 1160px;
+  margin: 100px auto;
+  padding: 0 48px;
+}
+
+/* IMAGE WRAPPER */
+.chairman-image-wrap {
+  position: relative;
+  flex-shrink: 0;
+}
+
+/* FRAME */
+.chairman-img-frame {
+  width: 280px;
+  height: auto;              /* ✅ IMPORTANT */
+  padding: 10px;
+  background: var(--white);
+
+  border: 6px solid var(--sandstone);
+  border-radius: 6px;
+
+  box-shadow:
+    10px 12px 0 var(--gold),
+    18px 20px 40px rgba(0,0,0,0.18);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* IMAGE FIX */
+.chairman-img-frame img {
+  width: 100%;
+  height: auto;              /* ✅ FULL IMAGE SHOW */
+  object-fit: contain;       /* ✅ NO CROP */
+  display: block;
+}
+
+/* BADGE */
+.chairman-badge {
+  position: absolute;
+  bottom: -16px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--forest);
+  color: var(--gold-light);
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  padding: 7px 18px;
+}
  
   .media-section {
     flex-direction: column;
