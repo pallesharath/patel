@@ -7,6 +7,7 @@ import museum1 from "../../assets/museum1.jpg"
 import owner from "../../assets/owner.jpg"
 import ViceChairman from "../../assets/ViceChairman.jpg"
 import President from "../../assets/president.jpg"
+import JointSecretary from "../../assets/JointSecretary.jpg"
 
 import { supabase } from "../../supabaseClient"
 
@@ -167,6 +168,15 @@ function Home() {
             <div className="leader-info">
               <h3>Kumbam Srinivas Reddy</h3>
               <span className="leader-role">General Secretary</span>
+            </div>
+          </div>
+          <div className="leader-card">
+            <div className="leader-img-wrap">
+              <img src={JointSecretary} alt="Joint Secretary" />
+            </div>
+            <div className="leader-info">
+              <h3>Velgapuri Narsimrao</h3>
+              <span className="leader-role">Joint Secretary</span>
             </div>
           </div>
         </div>
