@@ -1,5 +1,6 @@
-import { useEffect, useState } from "react"
+﻿import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
+import { useTranslation } from 'react-i18next'
 import "./Home.css"
 
 import banner from "../../assets/banner.jpg"
@@ -11,7 +12,10 @@ import JointSecretary from "../../assets/JointSecretary.jpg"
 
 import { supabase } from "../../supabaseClient"
 
+
+
 function Home() {
+  const { t } = useTranslation()
   const [latestUpdate, setLatestUpdate] = useState("Loading latest update...")
   const [projects, setProjects] = useState([])
   const [latestPress, setLatestPress] = useState(null)
@@ -77,6 +81,35 @@ function Home() {
     fetchTeamMembers()
   }, [])
 
+  const [currentIndex, setCurrentIndex] = useState(0)
+  const n = teamMembers.length
+  
+  const mod = (x, m) => ((x % m) + m) % m
+
+  const getCardClass = (i) => {
+    if (n === 0) return "team-card"
+    const offset = mod(i - currentIndex, n)
+    if (offset === 0) return "team-card tc-active"
+    if (offset === 1) return "team-card tc-next"
+    if (offset === n - 1) return "team-card tc-prev"
+    if (offset === 2) return "team-card tc-far-next"
+    if (offset === n - 2) return "team-card tc-far-prev"
+    return "team-card tc-hidden"
+  }
+
+  const moveCarousel = (dir) => setCurrentIndex((prev) => mod(prev + dir, n))
+  const goTo = (i) => setCurrentIndex(i)
+
+  useEffect(() => {
+    const handleKey = (e) => {
+      if (n === 0) return
+      if (e.key === "ArrowLeft") moveCarousel(-1)
+      if (e.key === "ArrowRight") moveCarousel(1)
+    }
+    window.addEventListener("keydown", handleKey)
+    return () => window.removeEventListener("keydown", handleKey)
+  }, [n, moveCarousel])
+
   return (
     <div className="home">
 
@@ -85,9 +118,9 @@ function Home() {
         <div className="hero-overlay" />
         <img src={banner} alt="Vedha Pudami Foundation" />
         <div className="hero-content">
-          <p className="hero-eyebrow">Est. March 2026</p>
+          <p className="hero-eyebrow">{t('hero.eyebrow')}</p>
           <h1 className="hero-title">Vedha Pudami<br /><span>Foundation</span></h1>
-          <p className="hero-subtitle">Preserving India's Ancient Heritage Through Evidence-Based Research</p>
+          <p className="hero-subtitle">{t('hero.subtitle')}</p>
           <div className="hero-divider" />
         </div>
       </section>
@@ -107,19 +140,11 @@ function Home() {
         <div className="about-bg" style={{ backgroundImage: `url(${museum1})` }} />
         <div className="about-veil" />
         <div className="about-content">
-          <p className="section-eyebrow">Who We Are</p>
-          <h2>About the Foundation</h2>
+          <p className="section-eyebrow">{t('about.eyebrow')}</p>
+          <h2>{t('about.title')}</h2>
           <div className="about-rule" />
           <p>
-            Vedha Pudami Foundation is a research-oriented organization established in March 2026
-            with the aim of studying and preserving the ancient history, culture, and heritage of
-            India. The foundation focuses on archaeology and heritage research, conducting in-depth
-            studies of ancient temples and historical structures. Through careful research and
-            documentation, it seeks to uncover historical truths with proper evidence and share
-            this knowledge with society. The foundation also studies the symbols, statues, and
-            sculptures found in temples to understand their historical significance. By promoting
-            research and awareness, Vedha Pudami Foundation works to preserve cultural heritage
-            and provide authentic historical knowledge for future generations.
+            {t('about.content')}
           </p>
         </div>
       </section>
@@ -133,41 +158,36 @@ function Home() {
           <div className="chairman-badge">Founder &amp; Chairman</div>
         </div>
         <div className="chairman-content">
-          <p className="section-eyebrow">Leadership</p>
+          <p className="section-eyebrow">{t('chairman.eyebrow')}</p>
           <h2>Thella Satheesh Patel</h2>
           <div className="chairman-rule" />
           <p>
-            Mr. Thella Satheesh Patel is the Founder and Chairman of the Vedha Pudami Foundation.
-            With more than 14 years of experience, he has conducted extensive research on ancient
-            history, temple architecture, and the cultural heritage of India. Through evidence-based
-            research, his primary aim is to uncover historical truths and share that knowledge with
-            society. Under his leadership, the foundation has initiated several impactful social
-            programs and research initiatives.
+            {t('chairman.content')}
           </p>
         </div>
       </section>
 
       {/* LEADERS */}
       <section className="leaders-section">
-        <p className="section-eyebrow center">Core Leadership</p>
-        <h2 className="section-heading center">Pillars of the Foundation</h2>
+        <p className="section-eyebrow center">{t('leaders.eyebrow')}</p>
+        <h2 className="section-heading center">{t('leaders.title')}</h2>
         <div className="leaders-grid">
           <div className="leader-card">
             <div className="leader-img-wrap">
               <img src={ViceChairman} alt="Vice Chairman" />
             </div>
             <div className="leader-info">
-              <h3>Gurram Thirupthi Reddy</h3>
-              <span className="leader-role">Vice Chairman</span>
+              <h3>Gurram Thirupathi Reddy</h3>
+              <span className="leader-role">{t('leaders.viceChairman')}</span>
             </div>
           </div>
           <div className="leader-card">
             <div className="leader-img-wrap">
-              <img src={President} alt="General Secretary" />
+              <img src={President} alt="President" />
             </div>
             <div className="leader-info">
               <h3>Kumbam Srinivas Reddy</h3>
-              <span className="leader-role">General Secretary</span>
+              <span className="leader-role">{t('leaders.president')}</span>
             </div>
           </div>
           <div className="leader-card">
@@ -175,8 +195,8 @@ function Home() {
               <img src={JointSecretary} alt="Joint Secretary" />
             </div>
             <div className="leader-info">
-              <h3>Velgapuri Narsimrao</h3>
-              <span className="leader-role">Joint Secretary</span>
+              <h3>Velgapuri Narasima Rao</h3>
+              <span className="leader-role">{t('leaders.jointSecretary')}</span>
             </div>
           </div>
         </div>
@@ -185,8 +205,8 @@ function Home() {
       {/* PROJECTS + PRESS */}
       <section className="media-section">
         <div className="media-col">
-          <p className="section-eyebrow">What's Ahead</p>
-          <h2 className="media-heading">Upcoming Projects</h2>
+          <p className="section-eyebrow">{t('projects.eyebrow')}</p>
+          <h2 className="media-heading">{t('projects.title')}</h2>
           <div className="media-rule" />
           <div className="project-grid">
             {projects.length > 0 ? projects.slice(0, 2).map((project) => (
@@ -209,8 +229,8 @@ function Home() {
         <div className="media-divider" />
 
         <div className="media-col">
-          <p className="section-eyebrow">In the News</p>
-          <h2 className="media-heading">Press Coverage</h2>
+          <p className="section-eyebrow">{t('press.eyebrow')}</p>
+          <h2 className="media-heading">{t('press.title')}</h2>
           <div className="media-rule" />
           <div className="press-grid">
             {pressLoading ? (
@@ -252,22 +272,63 @@ function Home() {
       {/* TEAM */}
       <section className="team-section">
         <p className="section-eyebrow center">The People Behind the Work</p>
-        <h2 className="section-heading center">Our Team</h2>
+        <h2 className="section-heading center" style={{ color: "var(--white)" }}>Our Team</h2>
         <div className="team-rule" />
-        <div className="team-grid">
-          {teamMembers.length > 0 ? teamMembers.map((member) => (
-            <div className="team-card" key={member.id}>
+
+        {teamMembers.length > 0 ? (
+          <div className="team-carousel-outer">
+      <div className="team-carousel-wrap">
+
+        <button
+          className="team-carousel-btn btn-prev"
+          onClick={() => moveCarousel(-1)}
+          aria-label="Previous team member"
+        >
+          &#8592;
+        </button>
+
+        <div className="team-carousel-track">
+          {teamMembers.map((member, i) => (
+            <div className={getCardClass(i)} key={member.id}>
               <div className="team-img-wrap">
-                <img src={member.image} alt={member.name} />
+                <img
+                  src={member.image}
+                  alt={member.name}
+                  onError={e => { e.target.onerror = null; e.target.src = 'https://via.placeholder.com/220x260?text=No+Image' }}
+                />
               </div>
               <div className="team-info">
                 <h3>{member.name}</h3>
                 <p>{member.role}</p>
               </div>
             </div>
-          )) : <p className="empty-msg center">No team members available</p>}
+          ))}
         </div>
-      </section>
+
+        <button
+          className="team-carousel-btn btn-next"
+          onClick={() => moveCarousel(1)}
+          aria-label="Next team member"
+        >
+          &#8594;
+        </button>
+      </div>
+
+      <div className="team-carousel-dots">
+        {teamMembers.map((_, i) => (
+          <button
+            key={i}
+            className={`dot${i === currentIndex ? " active" : ""}`}
+            onClick={() => goTo(i)}
+            aria-label={`Go to team member ${i + 1}`}
+          />
+        ))}
+      </div>
+    </div>
+  ) : (
+    <p className="empty-msg center">No team members available</p>
+  )}
+</section>
 
     </div>
   )
