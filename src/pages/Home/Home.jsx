@@ -7,7 +7,7 @@ import banner from "../../assets/banner.jpg"
 import museum1 from "../../assets/museum1.jpg"
 import owner from "../../assets/owner.jpg"
 import ViceChairman from "../../assets/ViceChairman.jpg"
-import President from "../../assets/president.jpg"
+import GeneralSecretary from "../../assets/GeneralSecretary.jpg"
 import JointSecretary from "../../assets/JointSecretary.jpg"
 
 import { supabase } from "../../supabaseClient"
@@ -183,11 +183,11 @@ function Home() {
           </div>
           <div className="leader-card">
             <div className="leader-img-wrap">
-              <img src={President} alt="President" />
+              <img src={GeneralSecretary} alt="General Secretary" />
             </div>
             <div className="leader-info">
               <h3>Kumbam Srinivas Reddy</h3>
-              <span className="leader-role">{t('leaders.president')}</span>
+              <span className="leader-role">{t('leaders.generalSecretary')}</span>
             </div>
           </div>
           <div className="leader-card">
